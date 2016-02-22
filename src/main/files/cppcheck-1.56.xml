@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<results version="2">
+  <cppcheck version="1.56"/>
+  <errors>  <error id="AssignmentAddressToInteger" severity="portability" msg="Assigning a pointer to an integer is not portable." verbose="Assigning a pointer to an integer (int/long/etc) is not portable across different platforms and compilers. For example in 32-bit Windows and linux they are same width, but in 64-bit Windows and linux they are of different width. In worst case you end up assigning 64-bit address to 32-bit integer. The safe way is to store addresses only in pointer types (or typedefs like uintptr_t).">
+  </error>
+  <error id="AssignmentIntegerToAddress" severity="portability" msg="Assigning an integer to a pointer is not portable." verbose="Assigning an integer (int/long/etc) to a pointer is not portable across different platforms and compilers. For example in 32-bit Windows and linux they are same width, but in 64-bit Windows and linux they are of different width. In worst case you end up assigning 64-bit integer to 32-bit pointer. The safe way is to store addresses only in pointer types (or typedefs like uintptr_t).">
+  </error>
+  <error id="CastIntegerToAddressAtReturn" severity="portability" msg="Returning an integer in a function with pointer return type is not portable." verbose="Returning an integer (int/long/etc) in a function with pointer return type is not portable across different platforms and compilers. For example in 32-bit Windows and Linux they are same width, but in 64-bit Windows and Linux they are of different width. In worst case you end up casting 64-bit integer down to 32-bit pointer. The safe way is to always return a pointer.">
+  </error>
+  <error id="CastAddressToIntegerAtReturn" severity="portability" msg="Returning an address value in a function with integer return type is not portable." verbose="Returning an address value in a function with integer (int/long/etc) return type is not portable across different platforms and compilers. For example in 32-bit Windows and Linux they are same width, but in 64-bit Windows and Linux they are of different width. In worst case you end up casting 64-bit address down to 32-bit integer. The safe way is to always return an integer.">
+  </error>
+  <error id="autoVariables" severity="error" msg="Address of local auto-variable assigned to a function parameter." verbose="Dangerous assignment - the function parameter is assigned the address of a local auto-variable. Local auto-variables are reserved from the stack which is freed when the function ends. So the pointer to a local variable is invalid after the function ends.">
+  </error>
+  <error id="returnAddressOfAutoVariable" severity="error" msg="Address of an auto-variable returned." verbose="Address of an auto-variable returned.">
+  </error>
+  <error id="returnLocalVariable" severity="error" msg="Pointer to local array variable returned." verbose="Pointer to local array variable returned.">
+  </error>
+  <error id="returnReference" severity="error" msg="Reference to auto variable returned." verbose="Reference to auto variable returned.">
+  </error>
+  <error id="returnTempReference" severity="error" msg="Reference to temporary returned." verbose="Reference to temporary returned.">
+  </error>
+  <error id="returnTempPointer" severity="error" msg="Pointer to temporary returned." verbose="Pointer to temporary returned.">
+  </error>
+  <error id="autovarInvalidDeallocation" severity="error" msg="Deallocation of an auto-variable results in undefined behaviour." verbose="The deallocation of an auto-variable results in undefined behaviour. You should only free memory that has been allocated dynamically.">
+  </error>
+  <error id="returnAddressOfFunctionParameter" severity="error" msg="Address of function parameter 'parameter' returned." verbose="Address of the function parameter 'parameter' becomes invalid after the function exits because function parameters are stored on the stack which is freed when the function exits. Thus the returned value is invalid.">
+  </error>
+  <error id="boostForeachError" severity="error" msg="BOOST_FOREACH caches the end() iterator. It's undefined behavior if you modify the container inside." verbose="BOOST_FOREACH caches the end() iterator. It's undefined behavior if you modify the container inside.">
+  </error>
+  <error id="arrayIndexOutOfBounds" severity="error" msg="Array 'array[2]' accessed at index 2, which is out of bounds." verbose="Array 'array[2]' accessed at index 2, which is out of bounds.">
+  </error>
+  <error id="bufferAccessOutOfBounds" severity="error" msg="Buffer is accessed out of bounds: buffer" verbose="Buffer is accessed out of bounds: buffer">
+  </error>
+  <error id="outOfBounds" severity="error" msg="index is out of bounds: Supplied size 2 is larger than actual size 1." verbose="index is out of bounds: Supplied size 2 is larger than actual size 1.">
+  </error>
+  <error id="terminateStrncpy" severity="warning" msg="The buffer 'buffer' may not be null-terminated after the call to strncpy()." verbose="If the source string's size fits or exceeds the given size, strncpy() does not add a zero at the end of the buffer. This causes bugs later in the code if the code assumes buffer is null-terminated.">
+  </error>
+  <error id="bufferNotZeroTerminated" severity="warning" msg="The buffer 'buffer' is not null-terminated after the call to strncpy()." verbose="The buffer 'buffer' is not null-terminated after the call to strncpy(). This will cause bugs later in the code if the code assumes the buffer is null-terminated." inconclusive="true">
+  </error>
+  <error id="negativeIndex" severity="error" msg="Array index -1 is out of bounds." verbose="Array index -1 is out of bounds.">
+  </error>
+  <error id="insecureCmdLineArgs" severity="error" msg="Buffer overrun possible for long command line arguments." verbose="Buffer overrun possible for long command line arguments.">
+  </error>
+  <error id="pointerOutOfBounds" severity="portability" msg="Undefined behaviour: Pointer arithmetic result does not point into or just past the end of the array." verbose="Undefined behaviour: The result of this pointer arithmetic does not point into or just one element past the end of the array. Further information: https://www.securecoding.cert.org/confluence/display/seccode/ARR30-C.+Do+not+form+or+use+out+of+bounds+pointers+or+array+subscripts">
+  </error>
+  <error id="arrayIndexThenCheck" severity="style" msg="Array index 'index' is used before limits check." verbose="Defensive programming: The variable 'index' is used as an array index before it is check that is within limits. This can mean that the array might be accessed out of bounds. Reorder conditions such as '(a[i] &amp;&amp; i &lt; 10)' to '(i &lt; 10 &amp;&amp; a[i])'. That way the array will not be accessed if the index is out of limits.">
+  </error>
+  <error id="possibleBufferAccessOutOfBounds" severity="warning" msg="Possible buffer overflow if strlen(source) is larger than or equal to sizeof(destination)." verbose="Possible buffer overflow if strlen(source) is larger than or equal to sizeof(destination). The source buffer is larger than the destination buffer so there is the potential for overflowing the destination buffer.">
+  </error>
+  <error id="possibleReadlinkBufferOverrun" severity="warning" msg="readlink() might return the full size of 'buffer'. Lower the supplied size by one." verbose="readlink() might return the full size of 'buffer'. If a buffer[len] = '\0'; statement follows, it will overrun the buffer. Lower the supplied size by one." inconclusive="true">
+  </error>
+  <error id="noConstructor" severity="style" msg="The class 'classname' does not have a constructor." verbose="The class 'classname' does not have a constructor although it has private member variables. Member variables of builtin types are left uninitialized when the class is instanciated. That may cause bugs or undefined behavior.">
+  </error>
+  <error id="uninitMemberVar" severity="warning" msg="Member variable 'classname::varname' is not initialized in the constructor." verbose="Member variable 'classname::varname' is not initialized in the constructor.">
+  </error>
+  <error id="operatorEqVarError" severity="warning" msg="Member variable 'classname::' is not assigned a value in 'classname::operator='." verbose="Member variable 'classname::' is not assigned a value in 'classname::operator='.">
+  </error>
+  <error id="unusedPrivateFunction" severity="style" msg="Unused private function: 'classname::funcname'" verbose="Unused private function: 'classname::funcname'">
+  </error>
+  <error id="memsetClass" severity="error" msg="Using 'memfunc' on class that contains a classname." verbose="Using 'memfunc' on class that contains a classname.">
+  </error>
+  <error id="operatorEq" severity="style" msg="'class::operator=' should return 'class &amp;'." verbose="'class::operator=' should return 'class &amp;'.">
+  </error>
+  <error id="virtualDestructor" severity="error" msg="Class 'Base' which is inherited by class 'Derived' does not have a virtual destructor." verbose="Class 'Base' which is inherited by class 'Derived' does not have a virtual destructor. If you destroy instances of the derived class by deleting a pointer that points to the base class, only the destructor of the base class is executed. Thus, dynamic memory that is managed by the derived class could leak. This can be avoided by adding a virtual destructor to the base class.">
+  </error>
+  <error id="thisSubtraction" severity="warning" msg="Suspicious pointer subtraction. Did you intend to write '-&gt;'?" verbose="Suspicious pointer subtraction. Did you intend to write '-&gt;'?">
+  </error>
+  <error id="operatorEqRetRefThis" severity="style" msg="'operator=' should return reference to 'this' instance." verbose="'operator=' should return reference to 'this' instance.">
+  </error>
+  <error id="operatorEqToSelf" severity="warning" msg="'operator=' should check for assignment to self to avoid problems with dynamic memory." verbose="'operator=' should check for assignment to self to ensure that each block of dynamically allocated memory is owned and managed by only one instance of the class.">
+  </error>
+  <error id="functionConst" severity="style" msg="Technically the member function 'class::function' can be const." verbose="The member function 'class::function' can be made a const function. Making this function 'const' should not cause compiler errors. Even though the function can be made const function technically it may not make sense conceptually. Think about your design and the task of the function first - is it a function that must not change object internal state?" inconclusive="true">
+  </error>
+  <error id="functionStatic" severity="performance" msg="Technically the member function 'class::function' can be static." verbose="The member function 'class::function' can be made a static function. Making a function static can bring a performance benefit since no 'this' instance is passed to the function. This change should not cause compiler errors but it does not necessarily make sense conceptually. Think about your design and the task of the function first - is it a function that must not access members of class instances?" inconclusive="true">
+  </error>
+  <error id="initializerList" severity="style" msg="Member variable 'class::variable' is in the wrong place in the initializer list." verbose="Member variable 'class::variable' is in the wrong place in the initializer list. Members are initialized in the order they are declared, not in the order they are in the initializer list.  Keeping the initializer list in the same order that the members were declared prevents order dependent initialization errors." inconclusive="true">
+  </error>
+  <error id="useInitializationList" severity="performance" msg="Variable 'variable' is assigned in constructor body. Consider performing initialization in initialization list." verbose="When an object of a class is created, the constructors of all member variables are called consecutively in the order the variables are declared, even if you don't explicitly write them to the initialization list. You could avoid assigning 'variable' a value by passing the value to the constructor in the initialization list.">
+  </error>
+  <error id="exceptThrowInDestructor" severity="error" msg="Exception thrown in destructor." verbose="Exception thrown in destructor.">
+  </error>
+  <error id="exceptDeallocThrow" severity="warning" msg="Exception thrown in invalid state, 'p' points at deallocated memory." verbose="Exception thrown in invalid state, 'p' points at deallocated memory.">
+  </error>
+  <error id="exceptRethrowCopy" severity="style" msg="Throwing a copy of the caught exception instead of rethrowing the original exception." verbose="Rethrowing an exception with 'throw varname;' creates an unnecessary copy of 'varname'. To rethrow the caught exception without unnecessary copying or slicing, use a bare 'throw;'.">
+  </error>
+  <error id="catchExceptionByValue" severity="style" msg="Exception should be caught by reference." verbose="The exception is caught by value. It could be caught as a (const) reference which is usually recommended in C++.">
+  </error>
+  <error id="coutCerrMisusage" severity="error" msg="Invalid usage of output stream: '&lt;&lt; std::cout'." verbose="Invalid usage of output stream: '&lt;&lt; std::cout'.">
+  </error>
+  <error id="fflushOnInputStream" severity="error" msg="fflush() called on input stream 'stdin' results in undefined behaviour." verbose="fflush() called on input stream 'stdin' results in undefined behaviour.">
+  </error>
+  <error id="IOWithoutPositioning" severity="error" msg="Read and write operations without a call to a positioning function (fseek, fsetpos or rewind) or fflush in between result in undefined behaviour." verbose="Read and write operations without a call to a positioning function (fseek, fsetpos or rewind) or fflush in between result in undefined behaviour.">
+  </error>
+  <error id="readWriteOnlyFile" severity="error" msg="Read operation on a file that was opened only for writing." verbose="Read operation on a file that was opened only for writing.">
+  </error>
+  <error id="writeReadOnlyFile" severity="error" msg="Write operation on a file that was opened only for reading." verbose="Write operation on a file that was opened only for reading.">
+  </error>
+  <error id="useClosedFile" severity="error" msg="Used file that is not opened." verbose="Used file that is not opened.">
+  </error>
+  <error id="invalidscanf" severity="warning" msg="scanf without field width limits can crash with huge input data." verbose="scanf without field width limits can crash with huge input data. Add a field width specifier to fix this problem:&#xa;    %s =&gt; %20s&#xa;&#xa;Sample program that can crash:&#xa;&#xa;#include &lt;stdio.h&gt;&#xa;int main()&#xa;{&#xa;    char c[5];&#xa;    scanf(&quot;%s&quot;, c);&#xa;    return 0;&#xa;}&#xa;&#xa;To make it crash, type in more than 5 characters.">
+  </error>
+  <error id="wrongPrintfScanfArgNum" severity="error" msg="printf format string has 3 parameters but only 2 are given." verbose="printf format string has 3 parameters but only 2 are given.">
+  </error>
+  <error id="invalidScanfArgType" severity="warning" msg="scanf argument no. 1: requires a non-const pointer or array as argument." verbose="scanf argument no. 1: requires a non-const pointer or array as argument.">
+  </error>
+  <error id="invalidPrintfArgType_s" severity="warning" msg="%s in format string (no. 1) requires a char* given in the argument list." verbose="%s in format string (no. 1) requires a char* given in the argument list.">
+  </error>
+  <error id="invalidPrintfArgType_n" severity="warning" msg="%n in format string (no. 1) requires a pointer to an non-const integer given in the argument list." verbose="%n in format string (no. 1) requires a pointer to an non-const integer given in the argument list.">
+  </error>
+  <error id="invalidPrintfArgType_p" severity="warning" msg="%p in format string (no. 1) requires an address given in the argument list." verbose="%p in format string (no. 1) requires an address given in the argument list.">
+  </error>
+  <error id="invalidPrintfArgType_int" severity="warning" msg="%X in format string (no. 1) requires an integer given in the argument list." verbose="%X in format string (no. 1) requires an integer given in the argument list.">
+  </error>
+  <error id="invalidPrintfArgType_uint" severity="warning" msg="%u in format string (no. 1) requires an unsigned integer given in the argument list." verbose="%u in format string (no. 1) requires an unsigned integer given in the argument list.">
+  </error>
+  <error id="invalidPrintfArgType_sint" severity="warning" msg="%i in format string (no. 1) requires a signed integer given in the argument list." verbose="%i in format string (no. 1) requires a signed integer given in the argument list.">
+  </error>
+  <error id="invalidPrintfArgType_float" severity="warning" msg="%f in format string (no. 1) requires a floating point number given in the argument list." verbose="%f in format string (no. 1) requires a floating point number given in the argument list.">
+  </error>
+  <error id="invalidScanfFormatWidth" severity="warning" msg="Width 5 given in format string (no. 10) doesn't match destination buffer." verbose="Width 5 given in format string (no. 10) doesn't match destination buffer.">
+  </error>
+  <error id="deallocret" severity="error" msg="Returning/dereferencing 'p' after it is deallocated / released" verbose="Returning/dereferencing 'p' after it is deallocated / released">
+  </error>
+  <error id="assignIfError" severity="style" msg="Mismatching assignment and comparison, comparison is always false." verbose="Mismatching assignment and comparison, comparison is always false.">
+  </error>
+  <error id="comparisonError" severity="style" msg="Expression '(X &amp; 0x6) == 0x1' is always false." verbose="The expression '(X &amp; 0x6) == 0x1' is always false. Check carefully constants and operators used, these errors might be hard to spot sometimes. In case of complex expression it might help to split it to separate expressions.">
+  </error>
+  <error id="multiCondition" severity="style" msg="Expression is always false because 'else if' condition matches previous condition at line 1." verbose="Expression is always false because 'else if' condition matches previous condition at line 1.">
+  </error>
+  <error id="leakNoVarFunctionCall" severity="error" msg="Allocation with funcName, funcName doesn't release it." verbose="Allocation with funcName, funcName doesn't release it.">
+  </error>
+  <error id="memleak" severity="error" msg="Memory leak: varname" verbose="Memory leak: varname">
+  </error>
+  <error id="resourceLeak" severity="error" msg="Resource leak: varname" verbose="Resource leak: varname">
+  </error>
+  <error id="deallocDealloc" severity="error" msg="Deallocating a deallocated pointer: varname" verbose="Deallocating a deallocated pointer: varname">
+  </error>
+  <error id="deallocuse" severity="error" msg="Dereferencing 'varname' after it is deallocated / released" verbose="Dereferencing 'varname' after it is deallocated / released">
+  </error>
+  <error id="mismatchSize" severity="error" msg="The given size sz is mismatching" verbose="The given size sz is mismatching">
+  </error>
+  <error id="mismatchAllocDealloc" severity="error" msg="Mismatching allocation and deallocation: varname" verbose="Mismatching allocation and deallocation: varname">
+  </error>
+  <error id="memleakOnRealloc" severity="error" msg="Common realloc mistake: 'varname' nulled but not freed upon failure" verbose="Common realloc mistake: 'varname' nulled but not freed upon failure">
+  </error>
+  <error id="nonreentrantFunctionscrypt" severity="portability" msg="Non reentrant function 'crypt' called. For threadsafe applications it is recommended to use the reentrant replacement function 'crypt_r'." verbose="Non reentrant function 'crypt' called. For threadsafe applications it is recommended to use the reentrant replacement function 'crypt_r'.">
+  </error>
+  <error id="nonreentrantFunctionsctermid" severity="portability" msg="Non reentrant function 'ctermid' called. For threadsafe applications it is recommended to use the reentrant replacement function 'ctermid_r'." verbose="Non reentrant function 'ctermid' called. For threadsafe applications it is recommended to use the reentrant replacement function 'ctermid_r'.">
+  </error>
+  <error id="nonreentrantFunctionsecvt" severity="portability" msg="Non reentrant function 'ecvt' called. For threadsafe applications it is recommended to use the reentrant replacement function 'ecvt_r'." verbose="Non reentrant function 'ecvt' called. For threadsafe applications it is recommended to use the reentrant replacement function 'ecvt_r'.">
+  </error>
+  <error id="nonreentrantFunctionsfcvt" severity="portability" msg="Non reentrant function 'fcvt' called. For threadsafe applications it is recommended to use the reentrant replacement function 'fcvt_r'." verbose="Non reentrant function 'fcvt' called. For threadsafe applications it is recommended to use the reentrant replacement function 'fcvt_r'.">
+  </error>
+  <error id="nonreentrantFunctionsfgetgrent" severity="portability" msg="Non reentrant function 'fgetgrent' called. For threadsafe applications it is recommended to use the reentrant replacement function 'fgetgrent_r'." verbose="Non reentrant function 'fgetgrent' called. For threadsafe applications it is recommended to use the reentrant replacement function 'fgetgrent_r'.">
+  </error>
+  <error id="nonreentrantFunctionsfgetpwent" severity="portability" msg="Non reentrant function 'fgetpwent' called. For threadsafe applications it is recommended to use the reentrant replacement function 'fgetpwent_r'." verbose="Non reentrant function 'fgetpwent' called. For threadsafe applications it is recommended to use the reentrant replacement function 'fgetpwent_r'.">
+  </error>
+  <error id="nonreentrantFunctionsfgetspent" severity="portability" msg="Non reentrant function 'fgetspent' called. For threadsafe applications it is recommended to use the reentrant replacement function 'fgetspent_r'." verbose="Non reentrant function 'fgetspent' called. For threadsafe applications it is recommended to use the reentrant replacement function 'fgetspent_r'.">
+  </error>
+  <error id="nonreentrantFunctionsgcvt" severity="portability" msg="Non reentrant function 'gcvt' called. For threadsafe applications it is recommended to use the reentrant replacement function 'gcvt_r'." verbose="Non reentrant function 'gcvt' called. For threadsafe applications it is recommended to use the reentrant replacement function 'gcvt_r'.">
+  </error>
+  <error id="nonreentrantFunctionsgetgrent" severity="portability" msg="Non reentrant function 'getgrent' called. For threadsafe applications it is recommended to use the reentrant replacement function 'getgrent_r'." verbose="Non reentrant function 'getgrent' called. For threadsafe applications it is recommended to use the reentrant replacement function 'getgrent_r'.">
+  </error>
+  <error id="nonreentrantFunctionsgetgrgid" severity="portability" msg="Non reentrant function 'getgrgid' called. For threadsafe applications it is recommended to use the reentrant replacement function 'getgrgid_r'." verbose="Non reentrant function 'getgrgid' called. For threadsafe applications it is recommended to use the reentrant replacement function 'getgrgid_r'.">
+  </error>
+  <error id="nonreentrantFunctionsgetgrnam" severity="portability" msg="Non reentrant function 'getgrnam' called. For threadsafe applications it is recommended to use the reentrant replacement function 'getgrnam_r'." verbose="Non reentrant function 'getgrnam' called. For threadsafe applications it is recommended to use the reentrant replacement function 'getgrnam_r'.">
+  </error>
+  <error id="nonreentrantFunctionsgethostbyaddr" severity="portability" msg="Non reentrant function 'gethostbyaddr' called. For threadsafe applications it is recommended to use the reentrant replacement function 'gethostbyaddr_r'." verbose="Non reentrant function 'gethostbyaddr' called. For threadsafe applications it is recommended to use the reentrant replacement function 'gethostbyaddr_r'.">
+  </error>
+  <error id="nonreentrantFunctionsgethostbyname" severity="portability" msg="Non reentrant function 'gethostbyname' called. For threadsafe applications it is recommended to use the reentrant replacement function 'gethostbyname_r'." verbose="Non reentrant function 'gethostbyname' called. For threadsafe applications it is recommended to use the reentrant replacement function 'gethostbyname_r'.">
+  </error>
+  <error id="nonreentrantFunctionsgethostbyname2" severity="portability" msg="Non reentrant function 'gethostbyname2' called. For threadsafe applications it is recommended to use the reentrant replacement function 'gethostbyname2_r'." verbose="Non reentrant function 'gethostbyname2' called. For threadsafe applications it is recommended to use the reentrant replacement function 'gethostbyname2_r'.">
+  </error>
+  <error id="nonreentrantFunctionsgethostent" severity="portability" msg="Non reentrant function 'gethostent' called. For threadsafe applications it is recommended to use the reentrant replacement function 'gethostent_r'." verbose="Non reentrant function 'gethostent' called. For threadsafe applications it is recommended to use the reentrant replacement function 'gethostent_r'.">
+  </error>
+  <error id="nonreentrantFunctionsgetlogin" severity="portability" msg="Non reentrant function 'getlogin' called. For threadsafe applications it is recommended to use the reentrant replacement function 'getlogin_r'." verbose="Non reentrant function 'getlogin' called. For threadsafe applications it is recommended to use the reentrant replacement function 'getlogin_r'.">
+  </error>
+  <error id="nonreentrantFunctionsgetnetbyaddr" severity="portability" msg="Non reentrant function 'getnetbyaddr' called. For threadsafe applications it is recommended to use the reentrant replacement function 'getnetbyaddr_r'." verbose="Non reentrant function 'getnetbyaddr' called. For threadsafe applications it is recommended to use the reentrant replacement function 'getnetbyaddr_r'.">
+  </error>
+  <error id="nonreentrantFunctionsgetnetbyname" severity="portability" msg="Non reentrant function 'getnetbyname' called. For threadsafe applications it is recommended to use the reentrant replacement function 'getnetbyname_r'." verbose="Non reentrant function 'getnetbyname' called. For threadsafe applications it is recommended to use the reentrant replacement function 'getnetbyname_r'.">
+  </error>
+  <error id="nonreentrantFunctionsgetnetgrent" severity="portability" msg="Non reentrant function 'getnetgrent' called. For threadsafe applications it is recommended to use the reentrant replacement function 'getnetgrent_r'." verbose="Non reentrant function 'getnetgrent' called. For threadsafe applications it is recommended to use the reentrant replacement function 'getnetgrent_r'.">
+  </error>
+  <error id="nonreentrantFunctionsgetprotobyname" severity="portability" msg="Non reentrant function 'getprotobyname' called. For threadsafe applications it is recommended to use the reentrant replacement function 'getprotobyname_r'." verbose="Non reentrant function 'getprotobyname' called. For threadsafe applications it is recommended to use the reentrant replacement function 'getprotobyname_r'.">
+  </error>
+  <error id="nonreentrantFunctionsgetpwent" severity="portability" msg="Non reentrant function 'getpwent' called. For threadsafe applications it is recommended to use the reentrant replacement function 'getpwent_r'." verbose="Non reentrant function 'getpwent' called. For threadsafe applications it is recommended to use the reentrant replacement function 'getpwent_r'.">
+  </error>
+  <error id="nonreentrantFunctionsgetpwnam" severity="portability" msg="Non reentrant function 'getpwnam' called. For threadsafe applications it is recommended to use the reentrant replacement function 'getpwnam_r'." verbose="Non reentrant function 'getpwnam' called. For threadsafe applications it is recommended to use the reentrant replacement function 'getpwnam_r'.">
+  </error>
+  <error id="nonreentrantFunctionsgetpwuid" severity="portability" msg="Non reentrant function 'getpwuid' called. For threadsafe applications it is recommended to use the reentrant replacement function 'getpwuid_r'." verbose="Non reentrant function 'getpwuid' called. For threadsafe applications it is recommended to use the reentrant replacement function 'getpwuid_r'.">
+  </error>
+  <error id="nonreentrantFunctionsgetrpcbyname" severity="portability" msg="Non reentrant function 'getrpcbyname' called. For threadsafe applications it is recommended to use the reentrant replacement function 'getrpcbyname_r'." verbose="Non reentrant function 'getrpcbyname' called. For threadsafe applications it is recommended to use the reentrant replacement function 'getrpcbyname_r'.">
+  </error>
+  <error id="nonreentrantFunctionsgetrpcbynumber" severity="portability" msg="Non reentrant function 'getrpcbynumber' called. For threadsafe applications it is recommended to use the reentrant replacement function 'getrpcbynumber_r'." verbose="Non reentrant function 'getrpcbynumber' called. For threadsafe applications it is recommended to use the reentrant replacement function 'getrpcbynumber_r'.">
+  </error>
+  <error id="nonreentrantFunctionsgetrpcent" severity="portability" msg="Non reentrant function 'getrpcent' called. For threadsafe applications it is recommended to use the reentrant replacement function 'getrpcent_r'." verbose="Non reentrant function 'getrpcent' called. For threadsafe applications it is recommended to use the reentrant replacement function 'getrpcent_r'.">
+  </error>
+  <error id="nonreentrantFunctionsgetservbyname" severity="portability" msg="Non reentrant function 'getservbyname' called. For threadsafe applications it is recommended to use the reentrant replacement function 'getservbyname_r'." verbose="Non reentrant function 'getservbyname' called. For threadsafe applications it is recommended to use the reentrant replacement function 'getservbyname_r'.">
+  </error>
+  <error id="nonreentrantFunctionsgetservbyport" severity="portability" msg="Non reentrant function 'getservbyport' called. For threadsafe applications it is recommended to use the reentrant replacement function 'getservbyport_r'." verbose="Non reentrant function 'getservbyport' called. For threadsafe applications it is recommended to use the reentrant replacement function 'getservbyport_r'.">
+  </error>
+  <error id="nonreentrantFunctionsgetservent" severity="portability" msg="Non reentrant function 'getservent' called. For threadsafe applications it is recommended to use the reentrant replacement function 'getservent_r'." verbose="Non reentrant function 'getservent' called. For threadsafe applications it is recommended to use the reentrant replacement function 'getservent_r'.">
+  </error>
+  <error id="nonreentrantFunctionsgetspent" severity="portability" msg="Non reentrant function 'getspent' called. For threadsafe applications it is recommended to use the reentrant replacement function 'getspent_r'." verbose="Non reentrant function 'getspent' called. For threadsafe applications it is recommended to use the reentrant replacement function 'getspent_r'.">
+  </error>
+  <error id="nonreentrantFunctionsgetspnam" severity="portability" msg="Non reentrant function 'getspnam' called. For threadsafe applications it is recommended to use the reentrant replacement function 'getspnam_r'." verbose="Non reentrant function 'getspnam' called. For threadsafe applications it is recommended to use the reentrant replacement function 'getspnam_r'.">
+  </error>
+  <error id="nonreentrantFunctionsgmtime" severity="portability" msg="Non reentrant function 'gmtime' called. For threadsafe applications it is recommended to use the reentrant replacement function 'gmtime_r'." verbose="Non reentrant function 'gmtime' called. For threadsafe applications it is recommended to use the reentrant replacement function 'gmtime_r'.">
+  </error>
+  <error id="nonreentrantFunctionslocaltime" severity="portability" msg="Non reentrant function 'localtime' called. For threadsafe applications it is recommended to use the reentrant replacement function 'localtime_r'." verbose="Non reentrant function 'localtime' called. For threadsafe applications it is recommended to use the reentrant replacement function 'localtime_r'.">
+  </error>
+  <error id="nonreentrantFunctionsreaddir" severity="portability" msg="Non reentrant function 'readdir' called. For threadsafe applications it is recommended to use the reentrant replacement function 'readdir_r'." verbose="Non reentrant function 'readdir' called. For threadsafe applications it is recommended to use the reentrant replacement function 'readdir_r'.">
+  </error>
+  <error id="nonreentrantFunctionsstrtok" severity="portability" msg="Non reentrant function 'strtok' called. For threadsafe applications it is recommended to use the reentrant replacement function 'strtok_r'." verbose="Non reentrant function 'strtok' called. For threadsafe applications it is recommended to use the reentrant replacement function 'strtok_r'.">
+  </error>
+  <error id="nonreentrantFunctionstempnam" severity="portability" msg="Non reentrant function 'tempnam' called. For threadsafe applications it is recommended to use the reentrant replacement function 'tempnam_r'." verbose="Non reentrant function 'tempnam' called. For threadsafe applications it is recommended to use the reentrant replacement function 'tempnam_r'.">
+  </error>
+  <error id="nonreentrantFunctionsttyname" severity="portability" msg="Non reentrant function 'ttyname' called. For threadsafe applications it is recommended to use the reentrant replacement function 'ttyname_r'." verbose="Non reentrant function 'ttyname' called. For threadsafe applications it is recommended to use the reentrant replacement function 'ttyname_r'.">
+  </error>
+  <error id="nullPointer" severity="error" msg="Possible null pointer dereference: pointer" verbose="Possible null pointer dereference: pointer">
+  </error>
+  <error id="obsoleteFunctionsasctime_r" severity="style" msg="Obsolete function 'asctime_r' called. It is recommended to use the function 'strftime' instead." verbose="Obsolete function 'asctime_r' called. It is recommended to use the function 'strftime' instead.">
+  </error>
+  <error id="obsoleteFunctionsbcmp" severity="style" msg="Obsolete function 'bcmp' called. It is recommended to use the function 'memcmp' instead." verbose="Obsolete function 'bcmp' called. It is recommended to use the function 'memcmp' instead.">
+  </error>
+  <error id="obsoleteFunctionsbcopy" severity="style" msg="Obsolete function 'bcopy' called. It is recommended to use the 'memmove' or 'memcpy' function instead." verbose="Obsolete function 'bcopy' called. It is recommended to use the 'memmove' or 'memcpy' function instead.">
+  </error>
+  <error id="obsoleteFunctionsbsd_signal" severity="style" msg="Obsolete function 'bsd_signal' called. It is recommended to use the function 'sigaction' instead." verbose="Obsolete function 'bsd_signal' called. It is recommended to use the function 'sigaction' instead.">
+  </error>
+  <error id="obsoleteFunctionsbzero" severity="style" msg="Obsolete function 'bzero' called. It is recommended to use the function 'memset' instead." verbose="Obsolete function 'bzero' called. It is recommended to use the function 'memset' instead.">
+  </error>
+  <error id="obsoleteFunctionsctime_r" severity="style" msg="Obsolete function 'ctime_r' called. It is recommended to use the function 'strftime' instead." verbose="Obsolete function 'ctime_r' called. It is recommended to use the function 'strftime' instead.">
+  </error>
+  <error id="obsoleteFunctionsecvt" severity="style" msg="Obsolete function 'ecvt' called. It is recommended to use the function 'sprintf' instead." verbose="Obsolete function 'ecvt' called. It is recommended to use the function 'sprintf' instead.">
+  </error>
+  <error id="obsoleteFunctionsfcvt" severity="style" msg="Obsolete function 'fcvt' called. It is recommended to use the function 'sprintf' instead." verbose="Obsolete function 'fcvt' called. It is recommended to use the function 'sprintf' instead.">
+  </error>
+  <error id="obsoleteFunctionsftime" severity="style" msg="Obsolete function 'ftime' called. It is recommended to use time(), gettimeofday() or clock_gettime() instead." verbose="Obsolete function 'ftime' called. It is recommended to use time(), gettimeofday() or clock_gettime() instead.">
+  </error>
+  <error id="obsoleteFunctionsgcvt" severity="style" msg="Obsolete function 'gcvt' called. It is recommended to use the function 'sprintf' instead." verbose="Obsolete function 'gcvt' called. It is recommended to use the function 'sprintf' instead.">
+  </error>
+  <error id="obsoleteFunctionsgetcontext" severity="style" msg="Obsolete function 'getcontext' called. Due to portability issues, applications are recommended to be rewritten to use POSIX threads." verbose="Obsolete function 'getcontext' called. Due to portability issues, applications are recommended to be rewritten to use POSIX threads.">
+  </error>
+  <error id="obsoleteFunctionsgethostbyaddr" severity="style" msg="Obsolete function 'gethostbyaddr' called. It is recommended to use the function 'getnameinfo' instead." verbose="Obsolete function 'gethostbyaddr' called. It is recommended to use the function 'getnameinfo' instead.">
+  </error>
+  <error id="obsoleteFunctionsgethostbyname" severity="style" msg="Obsolete function 'gethostbyname' called. It is recommended to use the function 'getaddrinfo' instead." verbose="Obsolete function 'gethostbyname' called. It is recommended to use the function 'getaddrinfo' instead.">
+  </error>
+  <error id="obsoleteFunctionsgetwd" severity="style" msg="Obsolete function 'getwd' called. It is recommended to use the function 'getcwd' instead." verbose="Obsolete function 'getwd' called. It is recommended to use the function 'getcwd' instead.">
+  </error>
+  <error id="obsoleteFunctionsindex" severity="style" msg="Obsolete function 'index' called. It is recommended to use the function 'strchr' instead." verbose="Obsolete function 'index' called. It is recommended to use the function 'strchr' instead.">
+  </error>
+  <error id="obsoleteFunctionsmakecontext" severity="style" msg="Obsolete function 'makecontext' called. Due to portability issues, applications are recommended to be rewritten to use POSIX threads." verbose="Obsolete function 'makecontext' called. Due to portability issues, applications are recommended to be rewritten to use POSIX threads.">
+  </error>
+  <error id="obsoleteFunctionspthread_attr_getstackaddr" severity="style" msg="Obsolete function 'pthread_attr_getstackaddr' called. It is recommended to use the function 'pthread_attr_getstack' instead." verbose="Obsolete function 'pthread_attr_getstackaddr' called. It is recommended to use the function 'pthread_attr_getstack' instead.">
+  </error>
+  <error id="obsoleteFunctionspthread_attr_setstackaddr" severity="style" msg="Obsolete function 'pthread_attr_setstackaddr' called. It is recommended to use the function 'pthread_attr_setstack' instead." verbose="Obsolete function 'pthread_attr_setstackaddr' called. It is recommended to use the function 'pthread_attr_setstack' instead.">
+  </error>
+  <error id="obsoleteFunctionsrand_r" severity="style" msg="Obsolete function 'rand_r' called. It is recommended to use the function 'rand' instead." verbose="Obsolete function 'rand_r' called. It is recommended to use the function 'rand' instead.">
+  </error>
+  <error id="obsoleteFunctionsrindex" severity="style" msg="Obsolete function 'rindex' called. It is recommended to use the function 'strrchr' instead." verbose="Obsolete function 'rindex' called. It is recommended to use the function 'strrchr' instead.">
+  </error>
+  <error id="obsoleteFunctionsscalbln" severity="style" msg="Obsolete function 'scalb' called. It is recommended to use 'scalbln', 'scalblnf' or 'scalblnl' instead." verbose="Obsolete function 'scalb' called. It is recommended to use 'scalbln', 'scalblnf' or 'scalblnl' instead.">
+  </error>
+  <error id="obsoleteFunctionsswapcontext" severity="style" msg="Obsolete function 'swapcontext' called. Due to portability issues, applications are recommended to be rewritten to use POSIX threads." verbose="Obsolete function 'swapcontext' called. Due to portability issues, applications are recommended to be rewritten to use POSIX threads.">
+  </error>
+  <error id="obsoleteFunctionstmpnam" severity="style" msg="Obsolete function 'tmpnam' called. It is recommended to use 'tmpfile', 'mkstemp' or 'mkdtemp' instead." verbose="Obsolete function 'tmpnam' called. It is recommended to use 'tmpfile', 'mkstemp' or 'mkdtemp' instead.">
+  </error>
+  <error id="obsoleteFunctionstmpnam_r" severity="style" msg="Obsolete function 'tmpnam_r' called. It is recommended to use 'tmpfile', 'mkstemp' or 'mkdtemp' instead." verbose="Obsolete function 'tmpnam_r' called. It is recommended to use 'tmpfile', 'mkstemp' or 'mkdtemp' instead.">
+  </error>
+  <error id="obsoleteFunctionsualarm" severity="style" msg="Obsolete function 'ualarm' called. It is recommended to use 'timer_create', 'timer_delete', 'timer_getoverrun', 'timer_gettime' or 'timer_settime' instead." verbose="Obsolete function 'ualarm' called. It is recommended to use 'timer_create', 'timer_delete', 'timer_getoverrun', 'timer_gettime' or 'timer_settime' instead.">
+  </error>
+  <error id="obsoleteFunctionsusleep" severity="style" msg="Obsolete function 'usleep' called. It is recommended to use the 'nanosleep' or 'setitimer' function instead." verbose="The obsolete function 'usleep' is called. POSIX.1-2001 declares usleep() function obsolete and POSIX.1-2008 removes it. It is recommended that new applications use the 'nanosleep' or 'setitimer' function.">
+  </error>
+  <error id="obsoleteFunctionsutime" severity="style" msg="Obsolete function 'utime' called. It is recommended to use the function 'utimensat' instead." verbose="Obsolete function 'utime' called. It is recommended to use the function 'utimensat' instead.">
+  </error>
+  <error id="obsoleteFunctionsvfork" severity="style" msg="Obsolete function 'vfork' called. It is recommended to use the function 'fork' instead." verbose="Obsolete function 'vfork' called. It is recommended to use the function 'fork' instead.">
+  </error>
+  <error id="obsoleteFunctionswcswcs" severity="style" msg="Obsolete function 'wcswcs' called. It is recommended to use the function 'wcsstr' instead." verbose="Obsolete function 'wcswcs' called. It is recommended to use the function 'wcsstr' instead.">
+  </error>
+  <error id="assignBoolToPointer" severity="error" msg="Assigning bool value to pointer (converting bool value to address)" verbose="Assigning bool value to pointer (converting bool value to address)">
+  </error>
+  <error id="sprintfOverlappingData" severity="error" msg="Undefined behavior: variable is used as parameter and destination in s[n]printf()." verbose="The variable 'varname' is used both as a parameter and as a destination in s[n]printf(). The origin and destination buffers overlap. Quote from glibc (C-library) documentation (http://www.gnu.org/software/libc/manual/html_mono/libc.html#Formatted-Output-Functions): 'If copying takes place between objects that overlap as a result of a call to sprintf() or snprintf(), the results are undefined.'">
+  </error>
+  <error id="udivError" severity="error" msg="Unsigned division. The result will be wrong." verbose="Unsigned division. The result will be wrong.">
+  </error>
+  <error id="zerodiv" severity="error" msg="Division by zero" verbose="Division by zero">
+  </error>
+  <error id="wrongmathcall" severity="error" msg="Passing value  to () leads to undefined result" verbose="Passing value  to () leads to undefined result">
+  </error>
+  <error id="unusedScopedObject" severity="error" msg="Instance of &quot;varname&quot; object destroyed immediately." verbose="Instance of &quot;varname&quot; object destroyed immediately.">
+  </error>
+  <error id="sizeofwithsilentarraypointer" severity="error" msg="Using sizeof for array given as function argument returns the size of pointer." verbose="Giving array as function parameter and then using sizeof-operator for the array argument. In this case the sizeof-operator returns the size of pointer (in the system). It does not return the size of the whole array in bytes as might be expected. For example, this code:&#xa;     int f(char a[100]) {&#xa;         return sizeof(a);&#xa;     }&#xa; returns 4 (in 32-bit systems) or 8 (in 64-bit systems) instead of 100 (the size of the array in bytes).">
+  </error>
+  <error id="pointerSize" severity="warning" msg="Using size of pointer varname instead of size of its data." verbose="Using size of pointer varname instead of size of its data. This is likely to lead to a buffer overflow. You probably intend to write sizeof(*varname)" inconclusive="true">
+  </error>
+  <error id="sizeofwithnumericparameter" severity="warning" msg="Using sizeof with a numeric constant as function argument might not be what you intended." verbose="It is unusual to use constant value with sizeof. For example, sizeof(10) returns 4 (in 32-bit systems) or 8 (in 64-bit systems) instead of 10. sizeof('A') and sizeof(char) can return different results.">
+  </error>
+  <error id="doubleFree" severity="error" msg="Memory pointed to by 'varname' is freed twice." verbose="Memory pointed to by 'varname' is freed twice.">
+  </error>
+  <error id="invalidPointerCast" severity="warning" msg="Casting between float* and double* which have an incompatible binary data representation" verbose="Casting between float* and double* which have an incompatible binary data representation">
+  </error>
+  <error id="shiftNegative" severity="error" msg="Shifting by a negative value." verbose="Shifting by a negative value.">
+  </error>
+  <error id="redundantCopyLocalConst" severity="performance" msg="Use const reference for varname to avoid unnecessary data copying." verbose="The const varname gets a copy of the data since const reference is not used. You can avoid the unnecessary data copying by converting varname to const reference instead of just const.">
+  </error>
+  <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting">
+  </error>
+  <error id="dangerousUsageStrtol" severity="error" msg="Invalid radix in call to strtol or strtoul. Must be 0 or 2-36" verbose="Invalid radix in call to strtol or strtoul. Must be 0 or 2-36">
+  </error>
+  <error id="passedByValue" severity="performance" msg="Function parameter 'parametername' should be passed by reference." verbose="Parameter 'parametername' is passed as a value. It could be passed as a (const) reference which is usually faster and recommended in C++.">
+  </error>
+  <error id="constStatement" severity="warning" msg="Redundant code: Found a statement that begins with type constant" verbose="Redundant code: Found a statement that begins with type constant">
+  </error>
+  <error id="charArrayIndex" severity="warning" msg="Using char type as array index" verbose="Using signed char type as array index. If the value can be greater than 127 there will be a buffer overflow (because of sign extension).">
+  </error>
+  <error id="charBitOp" severity="warning" msg="When using char variables in bit operations, sign extension can generate unexpected results." verbose="When using char variables in bit operations, sign extension can generate unexpected results. For example:&#xa;    char c = 0x80;&#xa;    int i = 0 | c;&#xa;    if (i &amp; 0x8000)&#xa;        printf(&quot;not expected&quot;);&#xa;The 'not expected' will be printed on the screen.">
+  </error>
+  <error id="variableScope" severity="style" msg="The scope of the variable 'varname' can be reduced" verbose="The scope of the variable 'varname' can be reduced. Warning: It can be unsafe to fix this message. Be careful. Especially when there are inner loops. Here is an example where cppcheck will write that the scope for 'i' can be reduced:&#xa;void f(int x)&#xa;{&#xa;    int i = 0;&#xa;    if (x) {&#xa;        // it's safe to move 'int i = 0' here&#xa;        for (int n = 0; n &lt; 10; ++n) {&#xa;            // it is possible but not safe to move 'int i = 0' here&#xa;            do_something(&amp;i);&#xa;        }&#xa;    }&#xa;}&#xa;When you see this message it is always safe to reduce the variable scope 1 level.">
+  </error>
+  <error id="strPlusChar" severity="error" msg="Unusual pointer arithmetic" verbose="Unusual pointer arithmetic">
+  </error>
+  <error id="sizeofsizeof" severity="warning" msg="Calling sizeof for 'sizeof'." verbose="Calling sizeof for 'sizeof looks like a suspicious code and most likely there should be just one 'sizeof'. The current code is equivalent to 'sizeof(size_t)'">
+  </error>
+  <error id="sizeofCalculation" severity="warning" msg="Found calculation inside sizeof()" verbose="Found calculation inside sizeof()">
+  </error>
+  <error id="redundantAssignInSwitch" severity="warning" msg="Redundant assignment of &quot;varname&quot; in switch" verbose="Redundant assignment of &quot;varname&quot; in switch">
+  </error>
+  <error id="redundantOperationInSwitch" severity="warning" msg="Redundant operation on 'varname' in switch." verbose="Redundant operation on 'varname' in switch.">
+  </error>
+  <error id="switchCaseFallThrough" severity="style" msg="Switch falls through case without comment" verbose="Switch falls through case without comment">
+  </error>
+  <error id="selfAssignment" severity="warning" msg="Redundant assignment of &quot;varname&quot; to itself" verbose="Redundant assignment of &quot;varname&quot; to itself">
+  </error>
+  <error id="assignmentInAssert" severity="warning" msg="Assert statement modifies 'varname'." verbose="Variable 'varname' is modified insert assert statement. Assert statements are removed from release builds so the code inside assert statement is not run. If the code is needed also in release builds this is a bug.">
+  </error>
+  <error id="incorrectLogicOperator" severity="warning" msg="Logical disjunction always evaluates to true: foo &gt; 3 &amp;&amp; foo &lt; 4." verbose="Are these conditions necessary? Did you intend to use &amp;&amp; instead? Are the numbers correct? Are you comparing the correct variables?">
+  </error>
+  <error id="redundantCondition" severity="style" msg="Redundant condition: If x &gt; 10 the condition x &gt; 11 is always true." verbose="Redundant condition: If x &gt; 10 the condition x &gt; 11 is always true.">
+  </error>
+  <error id="memsetZeroBytes" severity="warning" msg="memset() called to fill 0 bytes of 'varname'" verbose="memset() called to fill 0 bytes of 'varname'. Second and third arguments might be inverted.">
+  </error>
+  <error id="clarifyCalculation" severity="style" msg="Clarify calculation precedence for + and ?" verbose="Suspicious calculation. Please use parentheses to clarify the code. The code 'a+b?c:d' should be written as either '(a+b)?c:d' or 'a+(b?c:d)'.">
+  </error>
+  <error id="clarifyCondition" severity="style" msg="Suspicious condition (assignment+comparison), it can be clarified with parentheses" verbose="Suspicious condition (assignment+comparison), it can be clarified with parentheses">
+  </error>
+  <error id="clarifyStatement" severity="warning" msg="Ineffective statement similar to '*A++;'. Did you intend to write '(*A)++;'?" verbose="A statement like '*A++;' might not do what you intended. 'operator*' is executed before postfix 'operator++'. Thus, the dereference is meaningless. Did you intend to write '(*A)++;'?">
+  </error>
+  <error id="incorrectStringCompare" severity="warning" msg="String literal &quot;Hello World&quot; doesn't match length argument for substr(12)." verbose="String literal &quot;Hello World&quot; doesn't match length argument for substr(12).">
+  </error>
+  <error id="literalWithCharPtrCompare" severity="warning" msg="String literal compared with variable 'foo'. Did you intend to use strcmp() instead?" verbose="String literal compared with variable 'foo'. Did you intend to use strcmp() instead?">
+  </error>
+  <error id="incorrectStringBooleanError" severity="warning" msg="A boolean comparison with the string literal &quot;Hello World&quot; is always true." verbose="A boolean comparison with the string literal &quot;Hello World&quot; is always true.">
+  </error>
+  <error id="incrementboolean" severity="style" msg="The use of a variable of type bool with the ++ postfix operator is always true and deprecated by the C++ Standard." verbose="The operand of a postfix increment operator may be of type bool but it is deprecated by C++ Standard (Annex D-1) and the operand is always set to true.">
+  </error>
+  <error id="comparisonOfBoolWithInt" severity="warning" msg="Comparison of a boolean with an integer that is neither 1 nor 0" verbose="The expression &quot;varname&quot; is of type 'bool' and it is compared against a integer value that is neither 1 nor 0.">
+  </error>
+  <error id="duplicateIf" severity="style" msg="Found duplicate if expressions." verbose="Finding the same expression more than once is suspicious and might indicate a cut and paste or logic error. Please examine this code carefully to determine if it is correct.">
+  </error>
+  <error id="duplicateBranch" severity="style" msg="Found duplicate branches for if and else." verbose="Finding the same code for an if branch and an else branch is suspicious and might indicate a cut and paste or logic error. Please examine this code carefully to determine if it is correct.">
+  </error>
+  <error id="duplicateExpression" severity="style" msg="Same expression on both sides of '&amp;&amp;'." verbose="Finding the same expression on both sides of an operator is suspicious and might indicate a cut and paste or logic error. Please examine this code carefully to determine if it is correct.">
+  </error>
+  <error id="staticStringCompare" severity="warning" msg="Unnecessary comparison of static strings." verbose="The compared strings, 'str1' and 'str2', are always unequal. Therefore the comparison is unnecessary and looks suspicious.">
+  </error>
+  <error id="stringCompare" severity="warning" msg="Comparison of identical string variables." verbose="The compared strings, 'varname1' and 'varname2', are identical. This could be a logic bug.">
+  </error>
+  <error id="duplicateBreak" severity="style" msg="Consecutive return, break, continue, goto or throw statements are unnecessary." verbose="The second of the two statements can never be executed, and so should be removed.">
+  </error>
+  <error id="unreachableCode" severity="style" msg="Statements following return, break, continue, goto or throw will never be executed." verbose="Statements following return, break, continue, goto or throw will never be executed.">
+  </error>
+  <error id="unsignedLessThanZero" severity="style" msg="Checking if unsigned variable 'varname' is less than zero." verbose="The unsigned variable 'varname' will never be negative so it is either pointless or an error to check if it is.">
+  </error>
+  <error id="unsignedPositive" severity="style" msg="An unsigned variable 'varname' can't be negative so it is unnecessary to test it." verbose="An unsigned variable 'varname' can't be negative so it is unnecessary to test it.">
+  </error>
+  <error id="pointerLessThanZero" severity="style" msg="A pointer can not be negative so it is either pointless or an error to check if it is." verbose="A pointer can not be negative so it is either pointless or an error to check if it is.">
+  </error>
+  <error id="pointerPositive" severity="style" msg="A pointer can not be negative so it is either pointless or an error to check if it is not." verbose="A pointer can not be negative so it is either pointless or an error to check if it is not.">
+  </error>
+  <error id="bitwiseOnBoolean" severity="style" msg="Boolean variable 'varname' is used in bitwise operation. Did you mean &amp;&amp; ?" verbose="Boolean variable 'varname' is used in bitwise operation. Did you mean &amp;&amp; ?" inconclusive="true">
+  </error>
+  <error id="compareBoolExpressionWithInt" severity="warning" msg="Comparison of a boolean expression with an integer other than 0 or 1." verbose="Comparison of a boolean expression with an integer other than 0 or 1.">
+  </error>
+  <error id="suspiciousSemicolon" severity="warning" msg="Suspicious use of ; at the end of 'if/for/while' statement." verbose="Suspicious use of ; at the end of 'if/for/while' statement." inconclusive="true">
+  </error>
+  <error id="wrongcctypecall" severity="error" msg="Passing value value to funname() cause undefined behavior, which may lead to a crash" verbose="Passing value value to funname() cause undefined behavior, which may lead to a crash">
+  </error>
+  <error id="moduloAlwaysTrueFalse" severity="warning" msg="Comparison of modulo result is predetermined, because it is always less than 1." verbose="Comparison of modulo result is predetermined, because it is always less than 1.">
+  </error>
+  <error id="incompleteArrayFill" severity="warning" msg="Array 'buffer' is filled incompletely. Did you forget to multiply the size given to 'memset()' with 'sizeof(*buffer)'?" verbose="The array 'buffer' is filled incompletely. The function 'memset()' needs the size given in bytes, but an element of the given array is larger than one byte. Did you forget to multiply the size with 'sizeof(*buffer)'?" inconclusive="true">
+  </error>
+  <error id="invalidIterator1" severity="error" msg="Invalid iterator: iterator" verbose="Invalid iterator: iterator">
+  </error>
+  <error id="iterators" severity="error" msg="Same iterator is used with both container1 and container2" verbose="Same iterator is used with both container1 and container2">
+  </error>
+  <error id="mismatchingContainers" severity="error" msg="Iterators of mismatching containers are used together." verbose="Iterators of mismatching containers are used together.">
+  </error>
+  <error id="eraseDereference" severity="error" msg="Dereferenced iterator 'iter' has been erased" verbose="Dereferenced iterator 'iter' has been erased">
+  </error>
+  <error id="stlOutOfBounds" severity="error" msg="When i==foo.size(), foo[i] is out of bounds" verbose="When i==foo.size(), foo[i] is out of bounds">
+  </error>
+  <error id="erase" severity="error" msg="Dangerous iterator usage after erase()-method." verbose="The iterator is invalid after it has been used in erase() function. Dereferencing or comparing it with another iterator is invalid operation.">
+  </error>
+  <error id="invalidIterator2" severity="error" msg="After push_back|push_front|insert, the iterator 'iterator' may be invalid" verbose="After push_back|push_front|insert, the iterator 'iterator' may be invalid">
+  </error>
+  <error id="invalidPointer" severity="error" msg="Invalid pointer 'pointer' after push_back / push_front" verbose="Invalid pointer 'pointer' after push_back / push_front">
+  </error>
+  <error id="stlBoundries" severity="error" msg="Dangerous container iterator compare using &lt; operator for container" verbose="Container 'container' iterator compared with &lt; operator. Using &lt; operator with container type iterators is dangerous since the order of the items is not guaranteed. One should use != operator instead when comparing iterators in the container.">
+  </error>
+  <error id="stlIfFind" severity="warning" msg="Suspicious condition. The result of find is an iterator, but it is not properly checked." verbose="Suspicious condition. The result of find is an iterator, but it is not properly checked.">
+  </error>
+  <error id="stlIfStrFind" severity="performance" msg="Inefficient usage of string::find in condition; string::compare would be faster." verbose="Either inefficent or wrong usage of string::find. string::compare will be faster if string::find's result is compared with 0, because it will not scan the whole string. If your intention is to check that there are no findings in the string, you should compare with string::npos.">
+  </error>
+  <error id="stlcstr" severity="error" msg="Dangerous usage of c_str(). The returned value by c_str() is invalid after this call." verbose="Dangerous usage of c_str(). The c_str() return value is only valid until its string is deleted.">
+  </error>
+  <error id="stlcstrReturn" severity="performance" msg="Returning the result of c_str() in a function that returns std::string is slow and redundant." verbose="The conversion from const char* as returned by c_str to std::string creates an unnecessary string copy. Solve that by directly returning the string.">
+  </error>
+  <error id="stlcstrParam" severity="performance" msg="Passing the result of c_str() to a function that takes std::string as argument 0 is slow and redundant." verbose="The conversion from const char* as returned by c_str to std::string creates an unnecessary string copy. Solve that by directly passing the string.">
+  </error>
+  <error id="stlSize" severity="performance" msg="Possible inefficient checking for 'list' emptiness." verbose="Checking for 'list' emptiness might be inefficient. Using list.empty() instead of list.size() can be faster. list.size() can take linear time but list.empty() is guaranteed to take constant time.">
+  </error>
+  <error id="redundantIfRemove" severity="style" msg="Redundant checking of STL container element." verbose="Redundant checking of STL container element existence before removing it. The remove method in the STL will not do anything if element doesn't exist">
+  </error>
+  <error id="useAutoPointerCopy" severity="style" msg="Copy 'auto_ptr' pointer to another do not create two equal objects since one has lost its ownership of the pointer." verbose="The auto_ptr has semantics of strict ownership, meaning that the auto_ptr instance is the sole entity responsible for the object's lifetime. If an auto_ptr is copied, the source loses the reference.">
+  </error>
+  <error id="useAutoPointerContainer" severity="error" msg="You can randomly lose access to pointers if you store 'auto_ptr' pointers in a container because the copy-semantics of 'auto_ptr' are not compatible with containers." verbose="An element of container must be able to be copied but 'auto_ptr' does not fulfill this requirement. You should consider to use 'shared_ptr' or 'unique_ptr'. It is suitable for use in containers, because they no longer copy their values, they move them.">
+  </error>
+  <error id="useAutoPointerArray" severity="error" msg="Object pointed by an 'auto_ptr' is destroyed using operator 'delete'. You should not use 'auto_ptr' for pointers obtained with operator 'new[]'." verbose="Object pointed by an 'auto_ptr' is destroyed using operator 'delete'. This means that you should only use 'auto_ptr' for pointers obtained with operator 'new'. This excludes arrays, which are allocated by operator 'new[]' and must be deallocated by operator 'delete[]'.">
+  </error>
+  <error id="uselessCallsCompare" severity="warning" msg="It is inefficient to call 'str.find(str)' as it always returns 0." verbose="The 'std::string::find()' returns zero when given itself as parameter (str.find(str)). As it is currently the code is inefficient. It is also possible either the string searched ('str') or searched for ('str') is wrong/mixed in the code?">
+  </error>
+  <error id="uselessCallsSwap" severity="performance" msg="It is inefficient to swap a object with itself by calling 'str.swap(str)'" verbose="The 'swap()' function has no logical effect when given itself as parameter (str.swap(str)). As it is currently the code is inefficient. It is possible either the object or the parameter is wrong/mixed in the code?">
+  </error>
+  <error id="uselessCallsSubstr" severity="performance" msg="Useless call of function 'substr' because it returns a copy of the object. Use operator= instead." verbose="Useless call of function 'substr' because it returns a copy of the object. Use operator= instead.">
+  </error>
+  <error id="uselessCallsEmpty" severity="warning" msg="Useless call of function 'empty()'. Did you intend to call 'clear()' instead?" verbose="Useless call of function 'empty()'. Did you intend to call 'clear()' instead?">
+  </error>
+  <error id="uselessCallsRemove" severity="warning" msg="Return value of std::remove() ignored. Elements remain in container." verbose="The return value of std::remove() is ignored. This function returns an iterator to the end of the range containing those elements that should be kept. Elements past new end remain valid but with unspecified values. Use the erase method of the container to delete them.">
+  </error>
+  <error id="uninitstring" severity="error" msg="Dangerous usage of 'varname' (strncpy doesn't always 0-terminate it)" verbose="Dangerous usage of 'varname' (strncpy doesn't always 0-terminate it)">
+  </error>
+  <error id="uninitdata" severity="error" msg="Data is allocated but not initialized: varname" verbose="Data is allocated but not initialized: varname">
+  </error>
+  <error id="uninitvar" severity="error" msg="Uninitialized variable: varname" verbose="Uninitialized variable: varname">
+  </error>
+  <error id="unusedFunction" severity="style" msg="The function 'funcName' is never used" verbose="The function 'funcName' is never used">
+  </error>
+  <error id="unusedVariable" severity="style" msg="Unused variable: varname" verbose="Unused variable: varname">
+  </error>
+  <error id="unusedAllocatedMemory" severity="style" msg="Variable 'varname' is allocated memory that is never used" verbose="Variable 'varname' is allocated memory that is never used">
+  </error>
+  <error id="unreadVariable" severity="style" msg="Variable 'varname' is assigned a value that is never used" verbose="Variable 'varname' is assigned a value that is never used">
+  </error>
+  <error id="unassignedVariable" severity="style" msg="Variable 'varname' is not assigned a value" verbose="Variable 'varname' is not assigned a value">
+  </error>
+  <error id="unusedStructMember" severity="style" msg="struct or union member 'structname::variable' is never used" verbose="struct or union member 'structname::variable' is never used">
+  </error>
+  <error id="postfixOperator" severity="performance" msg="Prefer prefix ++/-- operators for non-primitive types." verbose="Prefix ++/-- operators should be preferred for non-primitive types. Pre-increment/decrement can be more efficient than post-increment/decrement. Post-increment/decrement usually involves keeping a copy of the previous value around and adds a little extra code.">
+  </error>
+  <error id="syntaxError" severity="error" msg="Invalid number of character ( ) when these macros are defined: ''." verbose="Invalid number of character ( ) when these macros are defined: ''.">
+  </error>
+  <error id="cppcheckError" severity="error" msg="Analysis failed. If the code is valid then please report this failure." verbose="Analysis failed. If the code is valid then please report this failure.">
+  </error>
+  <error id="variableHidingTypedef" severity="style" msg="The variable 'name' hides a typedef with the same name." verbose="The variable 'name' hides a typedef with the same name." inconclusive="true">
+  </error>
+  <error id="unnecessaryForwardDeclaration" severity="style" msg="The variable 'name' forward declaration is unnecessary. Type variable is already declared earlier." verbose="The variable 'name' forward declaration is unnecessary. Type variable is already declared earlier.">
+  </error>
+  <error id="variableHidingEnum" severity="style" msg="variable 'name' hides enumerator with same name" verbose="variable 'name' hides enumerator with same name">
+  </error>
+  <error id="unnecessaryQualification" severity="portability" msg="The extra qualification 'type' is unnecessary and is considered an error by many compilers." verbose="The extra qualification 'type' is unnecessary and is considered an error by many compilers.">
+  </error>
+  <error id="missingInclude" severity="information" msg="Include file: &quot;&quot; not found." verbose="Include file: &quot;&quot; not found.">
+  </error>
+  <error id="ConfigurationNotChecked" severity="information" msg="Skipping configuration 'X' because it seems to be invalid. Use -D if you want to check it." verbose="Skipping configuration 'X' because it seems to be invalid. Use -D if you want to check it.">
+  </error>
+  <error id="preprocessorErrorDirective" severity="error" msg="#error message" verbose="#error message">
+  </error>
+  </errors>
+</results>

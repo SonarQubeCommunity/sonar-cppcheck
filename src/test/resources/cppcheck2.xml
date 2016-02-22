@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<results version="2">
+  <cppcheck version="1.53"/>
+  <errors>
+  <error id="autoVariables" severity="error" msg="Assigning address of local auto-variable to a function parameter." verbose="Dangerous assignment - function parameter takes the address of a local auto-variable. Local auto-variables are reserved from the stack. And the stack is freed when the function ends. So the pointer to a local variable is invalid after the function ends.">
+    <location file="src/autoVariables/bad.c" line="4"/>
+  </error>
+  <error id="missingInclude" severity="information" msg="Cppcheck cannot find all the include files (use --check-config for details)" verbose="Cppcheck cannot find all the include files. Cpppcheck can check the code without the include files found. But the results will probably be more accurate if all the include files are found. Please check your project's include directories and add all of them as include directories for Cppcheck. To see what files Cppcheck cannot find use --check-config.">
+  </error>
+  <error id="arrayIndexOutOfBounds" severity="error" msg="Array 'a[2]' index 2 out of bounds" verbose="Array 'a[2]' index 2 out of bounds">
+    <location file="src/arrayIndexOutOfBounds/bad.c" line="6"/>
+  </error>
+  <error id="bufferAccessOutOfBounds" severity="error" msg="Buffer access out-of-bounds: a" verbose="Buffer access out-of-bounds: a">
+    <location file="src/bufferAccessOutOfBounds/bad.c" line="6"/>
+  </error>
+  <error id="erase" severity="error" msg="Dangerous iterator usage after erase()-method." verbose="The iterator is invalid after it has been used in erase() function. Dereferencing or comparing it with another iterator is invalid operation.">
+    <location file="src/erase/bad.cpp" line="11"/>
+  </error>
+  <error id="memleak" severity="error" msg="Memory leak: a" verbose="Memory leak: a">
+    <location file="src/memleak/bad.c" line="8"/>
+  </error>
+  <error id="outOfBounds" severity="error" msg="snprintf size is out of bounds: Supplied size 10 is larger than actual size of 5" verbose="snprintf size is out of bounds: Supplied size 10 is larger than actual size of 5">
+    <location file="src/outOfBounds/bad.c" line="5"/>
+  </error>
+  <error id="resourceLeak" severity="error" msg="Resource leak: a" verbose="Resource leak: a">
+    <location file="src/resourceLeak/bad.c" line="8"/>
+  </error>
+  <error id="syntaxError" severity="error" msg="Invalid number of character ({) when these macros are defined: 'A'." verbose="Invalid number of character ({) when these macros are defined: 'A'.">
+    <location file="src/syntaxError/bad.c" line="2"/>
+  </error>
+  </errors>
+</results>
