@@ -4,7 +4,7 @@
 
   <groupId>org.sonarqube.cppcheck</groupId>
   <artifactId>sonar-cppcheck-plugin</artifactId>
-  <version>1.0</version>
+  <version>1.1-SNAPSHOT</version>
   <packaging>sonar-plugin</packaging>
 
   <name>SonarQube :: Cppcheck Plugin</name>
