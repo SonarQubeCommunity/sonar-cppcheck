@@ -9,6 +9,7 @@
 
   <name>SonarQube :: Cppcheck Plugin</name>
   <description>Import Cppcheck reports.</description>
+  <url>https://github.com/SonarQubeCommunity/sonar-cppcheck</url>
   <inceptionYear>2016</inceptionYear>
   <licenses>
     <license>
