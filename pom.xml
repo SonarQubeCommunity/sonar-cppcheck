@@ -18,6 +18,10 @@
     </license>
   </licenses>
 
+  <prerequisites>
+    <maven>3.0.5</maven>
+  </prerequisites>
+
   <scm>
     <connection>scm:git:git@github.com:SonarQubeCommunity/sonar-cppcheck.git</connection>
     <developerConnection>scm:git:git@github.com:SonarQubeCommunity/sonar-cppcheck.git</developerConnection>
